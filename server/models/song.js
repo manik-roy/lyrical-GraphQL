@@ -24,7 +24,6 @@ SongSchema.statics.addLyric = function (id, content) {
 
   return this.findById(id).then(song => {
     const lyric = new Lyric({ content, song });
-    console.log(song);
 
     song.lyrics.push(lyric);
     return Promise.all([lyric.save(), song.save()]).then(([lyric, song]) => song);
